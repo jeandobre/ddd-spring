@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<page th:replace="default :: layout(~{::title}, ~{},~{::script}, ~{::section}, ~{})">
+<title>Agrolend :: Listagem de clientes</title>	
+
+<section>
+	<index></index>
+</sction>
+
+</page>
+
+<script>
+	Vue.component("index", {
+		data: () => ({
+			list: []
+		}),
+		
+		computed: {
+			fields: () => [{
+				name: "id",
+				sortField: "id",
+				title: "#"
+			}, {
+				name: 'name',
+				title: "Nome"
+			}, 'cpf', 'fone']
+		},
+		
+		created(){
+			axios.get('/rest/clients')
+				.then((response) => {
+					this.list = response.data;
+				});
+		},
+		
+		template: 
+		
+		`<div>
+			<vuetable ref="vuetable"
+			    api-url="/rest/clients"
+			    :fields="fields"
+			    data-path=""
+			    pagination-path=""
+			  ></vuetable>
+		</div>`
+	})
+</script>

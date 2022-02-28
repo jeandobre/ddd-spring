@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html th:fragment="layout (title, links, scripts, content, control)"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:replace="${title}">Title</title>
+		
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<meta charset="utf-8">
+
+  		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+	 	<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+		<link th:href="@{~/styles/hack.css}" rel="stylesheet" />
+
+		<th:block th:replace="${links}" />
+
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vuetable-2@1.7.5/dist/vuetable-2.min.js"></script>
+			
+		<th:block th:replace="${scripts}" />
+	</head>
+	<body>
+		<div id="app">
+		    <v-app id="application">
+		    	<system-bar></system-bar>
+		    	<control-bar>
+		    		<th:block th:replace="${control}" />
+		    		<template v-slot:right>
+		    			<user-control 
+		    				th:user="${session.user}" 
+		    				th:user-name="${session.userName}"
+		    				th:role="${session.role}"
+		    				th:avatar="${session.avatar}">
+		    			</user-control>
+		    		</template>
+		    	</control-bar>
+      
+      			<main-menu
+      				footer-link="https://www.agrolend.agr.br"       				      				
+      				th:footer-version="${session.version}"
+      				th:footer-year="${session.appYear}"
+      				th:footer-appname="${session.appName}">
+      			</main-menu>
+            
+      			<right-menu></right-menu>
+            
+		      <v-main class="blue-grey lighten-5">
+				<v-container>
+			      <th:block th:replace="${content}" />
+			    </v-container>
+		      </v-main>
+		    </v-app>
+		 </div>		 
+		 		  
+		 <script type="text/javascript" th:src="@{~/components/MainMenu.vue.js}"></script>
+		 <script type="text/javascript" th:src="@{~/components/RightMenu.vue.js}"></script>
+		 <script type="text/javascript" th:src="@{~/components/ControlBar.vue.js}"></script>
+		 <script type="text/javascript" th:src="@{~/components/SystemBar.vue.js}"></script>
+		 <script type="text/javascript" th:src="@{~/components/UserControl.vue.js}"></script>
+				 		 
+		 <script>
+		 	Vue.use(VueMask.VueMaskPlugin);
+		 	Vue.use(Vuetable);
+		    new Vue({
+		      el: '#app',
+		      vuetify: new Vuetify({})
+		    });
+		 </script>
+	</body>
+</html>

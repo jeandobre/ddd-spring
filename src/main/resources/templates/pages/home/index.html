@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<page th:replace="default :: layout(~{::title}, ~{},~{::script}, ~{::section}, ~{::date-time-current})">
+<title>Bem vindo</title>	
+
+<section>
+	<index></index>
+</section>
+
+<date-time-current></date-time-current>
+
+<script type="text/javascript" th:src="@{~/components/MiniCard.vue.js}"></script>
+<script type="text/javascript" th:src="@{~/components/home/ClientsTable.vue.js}"></script>
+<script type="text/javascript" th:src="@{~/components/home/AnaliseCard.vue.js}"></script>
+<script type="text/javascript" th:src="@{~/components/home/DateTimeCurrent.vue.js}"></script>
+
+</page>
+
+<script>
+	Vue.component("index", {
+		data: () => ({
+			image: "",			
+			partnerName: "Vital Force",
+			partnerDescription: "VITAL BRASIL CHEMICAL INDUSTRIA E COMERCIO DE PRODUTOS QUIMICOS LTDA.",
+			parnerUrl: "http://emprestimo.agrolend.agr.br/parceiro/vital-force"		
+		}),
+								
+		template: 		
+		`<div>
+			<v-row no-gutters>
+				<v-col>
+					<v-card class="mt-2" style="border: 2px solid #3E77E4" elevation="5">
+						<v-card-text>
+							<v-row>
+								<v-col cols="3">
+									<v-img src="/images/grupo-vital.png" width="280"  />
+								</v-col>
+								<v-col>
+									<p class="text-h5">{{ partnerName }}</p>
+									<div>{{ partnerDescription }}</div>
+									<a :href="parnerUrl" target="_blank">{{ parnerUrl }}</a>
+								</v-col>
+							</v-row>
+						</v-card-text>
+					</v-card>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col cols="7">
+					<v-card>
+						<v-card-title>Solicitações</v-card-title>
+						<v-card-text>
+							<v-row>
+								<v-col>
+									<mini-card 
+										color="#CE9833" 
+										value="15" 
+										href="/outra" 
+										link="Ver detalhe" 
+										header="Em processamento">
+									</mini-card>
+								</v-col>
+								<v-col>
+									<mini-card 
+										color="#09b0d6" 
+										value="7" 
+										href="/outra" 
+										link="Ver detalhe" 
+										header="Ativos">
+									</mini-card>
+								</v-col>
+								<v-col>
+									<mini-card 
+										color="#e56147" 
+										value="3" 
+										href="/outra" 
+										link="Ver detalhe" 
+										header="Canceladas">
+									</mini-card>
+								</v-col>
+								<v-col>
+									<mini-card 
+										color="#74de4f" 
+										value="7" 
+										href="/outra" 
+										link="Ver detalhe" 
+										header="Aprovadas">
+									</mini-card>
+								</v-col>
+							</v-row>
+						</v-card-text>
+					</v-card>
+					
+					<v-row class="mt-2">
+						<v-col>							
+							<analise-card></analise-card>
+							<v-card class="mt-2">
+								<v-card-text>
+									<span class="text-overline" style="color: #09b0d6">Precisa de ajuda?</span>
+									<ul>
+										<li>Como acessar o portal?</li>
+										<li>Como acessar o portal?</li>
+										
+										<li>Problemas com seu acesso?</li>
+									</ul>
+								</v-card-text>
+							</v-card>
+						</v-col>
+						<v-col>
+							<v-card>
+								<v-card-title>Notificações</v-card-title>
+								<v-card-text class="text-caption">
+									<v-list-item two-line>
+								      <v-list-item-content>
+								        <v-list-item-title>28/01/2022 10:50</v-list-item-title>
+								        <v-list-item-subtitle>
+								        	Empréstimo Mathias... mudado de em análise para...
+								        </v-list-item-subtitle>
+								      </v-list-item-content>
+								    </v-list-item>
+								</v-card-text>
+							</v-card>
+						</v-col>
+					</v-row>
+				</v-col>
+				<v-col>
+					<clients-table></clients-table>
+				</v-col>
+			</v-row>
+		</div>`
+	})
+</script>

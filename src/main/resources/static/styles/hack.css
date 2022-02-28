@@ -1,0 +1,19 @@
+.v-list-item--active {
+	background: linear-gradient(270deg, #0DB38C 39.46%, #72FFEE 100%);
+}
+
+.v-list-item--active .v-list-item__icon {
+	color: #F6F6F6;
+}
+
+.v-list-item--link:hover {
+	background-color: #A7FFEB;
+}
+
+.v-application a {
+	color: #0DB38C !important;
+}
+
+.v-application a:hover {
+	color: #1976d2 !important;
+}
