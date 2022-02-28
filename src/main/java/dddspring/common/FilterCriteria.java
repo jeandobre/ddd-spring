@@ -1,13 +1,10 @@
 package dddspring.common;
 
-import dddspring.domain.referral.Referral;
-import dddspring.infra.hibernate.ReferralModel;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-public class FilterCriteria {
+public final class FilterCriteria {
     private String key;
     private Operation operation;
     private Object value;

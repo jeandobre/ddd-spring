@@ -2,9 +2,9 @@ package dddspring.application;
 
 import dddspring.common.RegexFilter;
 import dddspring.common.ResponseEntityHeader;
-import dddspring.domain.referral.ReferralSpecificationBuilder;
 import dddspring.infra.hibernate.ReferralJpaRepository;
 import dddspring.infra.hibernate.ReferralModel;
+import dddspring.infra.hibernate.ReferralModelSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -29,8 +29,12 @@ public class ReferralRestController {
         Pageable pageable,
         @RequestParam(value = "filter", defaultValue = "") String filter
     ) {
-        Specification<ReferralModel> spec = (Specification<ReferralModel>) new RegexFilter(new ReferralSpecificationBuilder())
+        Specification<ReferralModel> spec = (Specification<ReferralModel>) new RegexFilter(new ReferralModelSpecification())
                 .getSpecFromFilter(filter);
+
+        //TODO quero chegar nisso aki
+        //Specification<ReferralModel> spec = new ReferralModelSpecification(filter).getSpecFromFilter();
+
         try {
             Page<ReferralModel> pageReferral = repository.findAll(spec, pageable);
 
