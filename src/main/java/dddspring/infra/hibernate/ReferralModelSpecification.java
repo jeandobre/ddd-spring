@@ -6,6 +6,10 @@ import org.springframework.data.jpa.domain.Specification;
 
 public final class ReferralModelSpecification extends SpecificationBuilder {
 
+    public ReferralModelSpecification(String filter) {
+        super(filter);
+    }
+
     @Override
     protected Specification<ReferralModel> getNewInstance(FilterCriteria filterCriteria) {
         return custom(filterCriteria);

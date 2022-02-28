@@ -29,11 +29,9 @@ public class ReferralRestController {
         Pageable pageable,
         @RequestParam(value = "filter", defaultValue = "") String filter
     ) {
-        Specification<ReferralModel> spec = (Specification<ReferralModel>) new RegexFilter(new ReferralModelSpecification())
-                .getSpecFromFilter(filter);
 
-        //TODO quero chegar nisso aki
-        //Specification<ReferralModel> spec = new ReferralModelSpecification(filter).getSpecFromFilter();
+        Specification<ReferralModel> spec = (Specification<ReferralModel>)
+                new ReferralModelSpecification(filter).build();
 
         try {
             Page<ReferralModel> pageReferral = repository.findAll(spec, pageable);
