@@ -4,7 +4,7 @@ import dddspring.common.FilterCriteria;
 import dddspring.common.SpecificationBuilder;
 import org.springframework.data.jpa.domain.Specification;
 
-public final class ReferralModelSpecification extends SpecificationBuilder {
+public final class ReferralModelSpecification extends SpecificationBuilder<ReferralModel> {
 
     public ReferralModelSpecification(String filter) {
         super(filter);

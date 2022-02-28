@@ -30,8 +30,7 @@ public class ReferralRestController {
         @RequestParam(value = "filter", defaultValue = "") String filter
     ) {
 
-        Specification<ReferralModel> spec = (Specification<ReferralModel>)
-                new ReferralModelSpecification(filter).build();
+        Specification<ReferralModel> spec = new ReferralModelSpecification(filter).build();
 
         try {
             Page<ReferralModel> pageReferral = repository.findAll(spec, pageable);

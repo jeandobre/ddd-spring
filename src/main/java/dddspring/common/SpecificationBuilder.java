@@ -3,7 +3,7 @@ package dddspring.common;
 import org.springframework.data.jpa.domain.Specification;
 import java.util.List;
 
-public abstract class SpecificationBuilder {
+public abstract class SpecificationBuilder<T> {
 
     private final List<FilterCriteria> params;
 
@@ -12,13 +12,13 @@ public abstract class SpecificationBuilder {
         params = regexFilter.params();
     }
 
-    public Specification<?> build() {
+    public Specification<T> build() {
 
         if (params.size() == 0) {
             return null;
         }
         System.out.println(params);
-        Specification<?> result = getNewInstance(params.get(0));
+        Specification<T> result = getNewInstance(params.get(0));
 
         for (int i = 1; i < params.size(); i++) {
             result = params.get(i).isOrPredicate()
