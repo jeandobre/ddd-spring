@@ -1,4 +1,4 @@
-package dddspring.infra.hibernate;
+package dddspring.infra.persistence;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;

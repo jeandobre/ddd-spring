@@ -1,4 +1,4 @@
-package dddspring.infra.hibernate;
+package dddspring.infra.persistence;
 
 import dddspring.domain.referral.Referral;
 import dddspring.domain.referral.ReferralRepository;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Component
-public final class ReferralMysqlRepository implements ReferralRepository {
+public final class ReferralPersistence implements ReferralRepository {
 
     @Autowired
     private ReferralJpaRepository referralJpaRepository;

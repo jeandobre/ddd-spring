@@ -1,4 +1,4 @@
-package dddspring.infra.hibernate;
+package dddspring.infra.persistence;
 
 import javax.persistence.*;
 import java.util.Date;

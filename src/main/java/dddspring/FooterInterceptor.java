@@ -26,8 +26,7 @@ public class FooterInterceptor implements HandlerInterceptor {
     request.getSession().setAttribute("user", "jean.dobre");
     request.getSession().setAttribute("role", "Administrador");
     request.getSession().setAttribute("avatar", "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/6153601bc7bea40069dc8e5e/0958ea6d-f79e-4287-83a2-dddcac83ac22/48");
-    
-    
+        
     return true;
   }
 

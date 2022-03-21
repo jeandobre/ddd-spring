@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<page th:replace="default-bootstrap4 :: layout(~{::title}, ~{},~{::script}, ~{::section}, ~{})">
+<title>Agrolend :: Solicitações</title>
+
+<section>
+	<index></index>
+</section>
+
+<script type="text/javascript" th:src="@{~/components/BTable.vue.js}"></script>
+
+</page>
+
+<script>
+	Vue.component("Index", {
+		
+		computed: {
+			headers: () => [{
+				field: "id",
+				sort: true,
+				title: "#",
+				width: 80,
+				scope: true
+			}, {
+				field: "ip",
+				title: "Ip da máquina"
+			}, {
+				field: "valueRequested",
+				title: "Valor requerido",
+				width: 120
+			}]
+		},
+		
+		
+		
+		template:
+		`<div class="card">
+			<div class="card-body">
+				<b-table
+					:headers="headers"
+					url="/rest/referrals"
+					sort-by="id"
+					sort-order="ASC"
+					caption="Lista de referências">
+				</b-table>
+			</div>
+		</div>`
+	})
+</script>

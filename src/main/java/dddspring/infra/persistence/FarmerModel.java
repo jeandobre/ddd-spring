@@ -1,4 +1,4 @@
-package dddspring.infra.hibernate;
+package dddspring.infra.persistence;
 
 import lombok.Getter;
 import lombok.Setter;
