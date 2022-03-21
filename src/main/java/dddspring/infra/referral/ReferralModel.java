@@ -1,7 +1,9 @@
-package dddspring.infra.persistence;
+package dddspring.infra.referral;
 
 import javax.persistence.*;
 import java.util.Date;
+
+import dddspring.infra.farmer.FarmerModel;
 import lombok.Getter;
 import lombok.Setter;
 

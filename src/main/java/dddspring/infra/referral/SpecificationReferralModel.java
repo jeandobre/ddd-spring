@@ -1,12 +1,12 @@
-package dddspring.infra.persistence;
+package dddspring.infra.referral;
 
 import dddspring.common.FilterCriteria;
 import dddspring.common.SpecificationBuilder;
 import org.springframework.data.jpa.domain.Specification;
 
-public final class ReferralModelSpecification extends SpecificationBuilder<ReferralModel> {
+public final class SpecificationReferralModel extends SpecificationBuilder<ReferralModel> {
 
-    public ReferralModelSpecification(String filter) {
+    public SpecificationReferralModel(String filter) {
         super(filter);
     }
 

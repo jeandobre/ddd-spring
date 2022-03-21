@@ -1,4 +1,4 @@
-package dddspring.infra.persistence;
+package dddspring.infra.farmer;
 
 import lombok.Getter;
 import lombok.Setter;
