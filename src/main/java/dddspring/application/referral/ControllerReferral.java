@@ -1,11 +1,11 @@
-package dddspring.application;
+package dddspring.application.referral;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ReferralController {
+public class ControllerReferral {
     
 	@GetMapping("/referrals")
 	public ModelAndView index() {

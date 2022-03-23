@@ -1,9 +1,9 @@
-package dddspring.application;
+package dddspring.application.referral;
 
 import dddspring.common.ResponseEntityHeader;
 import dddspring.infra.referral.JpaReferralRepository;
+import dddspring.infra.referral.ReferralModel;
 import dddspring.infra.referral.SpecificationReferralModel;
-import dddspring.infra.referral.ModelReferral;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/rest/referrals")
-public class ReferralRestController {
+public class RestControllerReferral {
 
     private final JpaReferralRepository repository;
 
-    public ReferralRestController(JpaReferralRepository repository) {
+    public RestControllerReferral(JpaReferralRepository repository) {
         this.repository = repository;
     }
 
@@ -29,10 +29,10 @@ public class ReferralRestController {
         @RequestParam(value = "filter", defaultValue = "") String filter
     ) {
 
-        Specification<ModelReferral> spec = new SpecificationReferralModel(filter).build();
+        Specification<ReferralModel> spec = new SpecificationReferralModel(filter).build();
 
         try {
-            Page<ModelReferral> pageReferral = repository.findAll(spec, pageable);
+            Page<ReferralModel> pageReferral = repository.findAll(spec, pageable);
 
             return ResponseEntityHeader.bodyAndHeaders(pageReferral);
         } catch (Exception e) {

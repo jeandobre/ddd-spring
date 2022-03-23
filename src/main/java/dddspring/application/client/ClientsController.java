@@ -1,4 +1,4 @@
-package dddspring.application;
+package dddspring.application.client;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
