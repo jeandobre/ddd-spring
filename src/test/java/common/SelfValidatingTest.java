@@ -1,6 +1,6 @@
 package common;
 
-import dddspring.application.client.NewClientCommand;
+import com.ddd.spring.application.client.NewClientCommand;
 import org.junit.jupiter.api.Test;
 
 public class SelfValidatingTest {
