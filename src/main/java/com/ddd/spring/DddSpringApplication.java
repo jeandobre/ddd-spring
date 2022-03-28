@@ -1,16 +1,15 @@
 package com.ddd.spring;
 
-import com.ddd.spring.application.AppConfig;
 import com.ddd.spring.application.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.thymeleaf.context.IContext;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
+@EnableAsync
 public class DddSpringApplication implements CommandLineRunner {
 
 	@Autowired
@@ -25,6 +24,6 @@ public class DddSpringApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Publisher bean = context.getBean("publisher", Publisher.class);
-		bean.sendMoney("Nova mensagem 0001", 25d, true);
+		bean.sendMoney("Nova mensagem 0001", 25d, false);
 	}
 }

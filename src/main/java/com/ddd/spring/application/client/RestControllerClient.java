@@ -2,6 +2,7 @@ package com.ddd.spring.application.client;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -9,7 +10,13 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/rest/clients")
 public class RestControllerClient {
-	
+
+	private final NewClientService service;
+
+	public RestControllerClient(NewClientService service) {
+		this.service = service;
+	}
+
 	@GetMapping
 	public List<ProjectionClient> list() {
 		
@@ -47,7 +54,8 @@ public class RestControllerClient {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> save(@Valid @RequestBody NewClientCommand command) {
-		return ResponseEntity.ok("User is valid");
+	public ResponseEntity<Object> save(@Valid @RequestBody NewClientForm form) {
+
+		return service.process(form);
 	}
 }

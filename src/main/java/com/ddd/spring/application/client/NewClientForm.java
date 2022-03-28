@@ -1,13 +1,14 @@
 package com.ddd.spring.application.client;
 
 import com.ddd.spring.common.Command;
+import com.ddd.spring.common.OneOf;
 import com.ddd.spring.common.SelfValidating;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class NewClientCommand extends SelfValidating<NewClientCommand> implements Command {
+public class NewClientForm extends SelfValidating<NewClientForm> implements Command {
 
 	@NotNull(message = "O campo não pode ficar vazio!")
 	@NotBlank(message = "O nome é obrigatório")
@@ -18,7 +19,7 @@ public class NewClientCommand extends SelfValidating<NewClientCommand> implement
 	
 	public String phone;
 
-	//@OneOf({ "Limpeza", "Alimentação" })
+	@OneOf({ "Limpeza", "Alimentação" })
 	public String type;
 
 }
