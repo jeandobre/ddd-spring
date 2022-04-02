@@ -3,6 +3,7 @@ package com.ddd.spring.infra.referral;
 import javax.persistence.*;
 import java.util.Date;
 
+import com.ddd.spring.domain.referral.ReferralMemento;
 import com.ddd.spring.infra.farmer.FarmerModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Table(name = "referral")
 @Getter
 @Setter
-public class ReferralModel {
+public class ReferralModel implements ReferralMemento {
 
     @Id
     private Long id;
@@ -28,4 +29,14 @@ public class ReferralModel {
     @ManyToOne
     @JoinColumn(name = "farmer_id", referencedColumnName = "id")
     private FarmerModel farmer;
+
+    @Override
+    public Double getApprovedValue() {
+        return this.getValueRequested();
+    }
+
+    @Override
+    public void setApprovedValue(Double value) {
+        this.setValueRequested(value);
+    }
 }
