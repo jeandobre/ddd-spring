@@ -3,15 +3,18 @@ package com.ddd.spring.infra.referral;
 import com.ddd.spring.domain.referral.Referral;
 import com.ddd.spring.domain.referral.ReferralId;
 import com.ddd.spring.domain.referral.ReferralRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
 public final class ReferralDao implements ReferralRepository {
 
-    @Autowired
-    private JpaReferralRepository jpaReferralRepository;
+    private final JpaReferralRepository jpaReferralRepository;
+
+    public ReferralDao(JpaReferralRepository jpaReferralRepository) {
+        this.jpaReferralRepository = jpaReferralRepository;
+        System.out.println("ReferralDao created...");
+    }
 
     @Override
     public void persist(Referral referral) {
