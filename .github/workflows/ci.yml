@@ -9,6 +9,7 @@ on:
 
 jobs:
   lint:
+    needs: unit_test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -23,8 +24,8 @@ jobs:
         DEFAULT_BRANCH: master
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
-  sonarqube:
-    needs: lint
+  sonarcloud:
+    needs: unit_test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -53,7 +54,6 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jeandobre_ddd-spring
 
   unit_test:
-    needs: sonarcloud
     runs-on: ubuntu-latest
 
     steps:
