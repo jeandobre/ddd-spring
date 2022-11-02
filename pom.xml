@@ -14,9 +14,9 @@
 	<name>Agrolend</name>
 	<description>Agrolend partner area</description>
 	<properties>
-		<java.version>11</java.version>
-		<sonar.organization>jeadobre-ddd-spring</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<java.version>17</java.version>
+		<sonar.organization>jeandobre-ddd-spring</sonar.organization>
+ 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
