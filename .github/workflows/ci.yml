@@ -24,7 +24,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   sonarqube:
-    name: Build and analyze
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
