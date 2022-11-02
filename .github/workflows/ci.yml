@@ -24,7 +24,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   sonarcloud:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -53,7 +52,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jeandobre_ddd-spring
 
   unit_test:
-    needs: sonarcloud
+    needs: ["sonarcloud", "lint"]
     runs-on: ubuntu-latest
 
     steps:
